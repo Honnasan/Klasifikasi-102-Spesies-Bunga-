@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prediction Result</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;400&display=swap"
+            rel="stylesheet">
+        <style>
+            body {
+                background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+                min-height: 100vh;
+                margin: 0;
+                font-family: 'Poppins', Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .container {
+                background: #fff;
+                padding: 2.5rem 2rem 2rem 2rem;
+                border-radius: 18px;
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+                text-align: center;
+                max-width: 350px;
+                width: 100%;
+                animation: fadeIn 1s;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .logo {
+                width: 70px;
+                margin-bottom: 1rem;
+                filter: drop-shadow(0 2px 8px #fda08544);
+            }
+            h1 {
+                color: #f76b1c;
+                margin-bottom: 1.5rem;
+                font-family: 'Poppins', Arial, sans-serif;
+                font-size: 2rem;
+            }
+            .result {
+                font-size: 1.3rem;
+                color: #333;
+                background: #f6d36522;
+                border-radius: 8px;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                font-weight: bold;
+                animation: popIn 0.7s;
+            }
+            @keyframes popIn {
+                0% { opacity: 0; transform: scale(0.8); }
+                80% { opacity: 1; transform: scale(1.05); }
+                100% { opacity: 1; transform: scale(1); }
+            }
+            .back-btn {
+                background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
+                color: #fff;
+                border: none;
+                border-radius: 6px;
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.2s;
+                font-weight: bold;
+                text-decoration: none;
+                box-shadow: 0 2px 8px #fda08544;
+            }
+            .back-btn:hover {
+                background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+                transform: translateY(-2px) scale(1.04);
+            }
+            .img-preview {
+                max-width: 200px;
+                max-height: 200px;
+                border-radius: 10px;
+                margin-bottom: 1.2rem;
+                box-shadow: 0 2px 8px #fda08544;
+            }
+            .footer {
+                margin-top: 2rem;
+                color: #aaa;
+                font-size: 0.9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="{{ url_for('static', filename='sunflower.png') }}"
+                alt="Flower Logo" class="logo">
+            <h1>Prediction Result</h1>
+            {% if image_url %}
+            <img src="{{ image_url }}" alt="Uploaded Image" class="img-preview">
+            {% endif %}
+            <div class="result">{{ result }}</div>
+            <a href="/" class="back-btn">Back</a>
+            <div class="footer">&copy; 2024 Flower Classifier</div>
+        </div>
+    </body>
+</html>
